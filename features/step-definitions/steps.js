@@ -6,8 +6,8 @@ Given("I am on Login page", async function() {
 });
 
 When ('I enter "tomsmith" username', async function() {
-const usernameInput = await $("#username");
-usernameInput.setValue("tomsmith");
+    const usernameInput = await $("#username");
+    usernameInput.setValue("tomsmith");
 });
 
 When ('I enter "SuperSecretPassword!" password', async function() {
@@ -35,5 +35,9 @@ Then ('I don\'t see the Logout button', async function() {
     const logoutButton = await $("i*=Logout");
     await expect(logoutButton).not.toBeDisplayed();
 });
+
+When('I enter "sdfsadg" username', async function() {
+  // Write code here that turns the phrase above into concrete actions
+})
 
 // yo
