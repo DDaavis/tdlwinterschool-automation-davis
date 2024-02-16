@@ -31,13 +31,7 @@ Then ('I see the Logout button', async function() {
     await expect(logoutButton).toBeDisplayed();
 });
 
-Then ('I don\'t see the Logout button', async function() {
-    const logoutButton = await $("i*=Logout");
-    await expect(logoutButton).not.toBeDisplayed();
-});
-
-When('I enter "sdfsadg" username', async function() {
-  // Write code here that turns the phrase above into concrete actions
-})
-
-// yo
+// Then ('I don\'t see the Logout button', async function() {
+//     const logoutButton = await $("i*=Logout");
+//     await expect(logoutButton).not.toBeDisplayed();
+// });
