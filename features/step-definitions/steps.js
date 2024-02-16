@@ -35,3 +35,5 @@ Then ('I don\'t see the Logout button', async function() {
     const logoutButton = await $("i*=Logout");
     await expect(logoutButton).not.toBeDisplayed();
 });
+
+// yo
