@@ -1,4 +1,4 @@
-import allure from 'allure-commandline'; 
+import allure from 'allure-commandline';
 
 export const config = {
     //
@@ -52,7 +52,10 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'wdio:chromedriverOptions': {
+            binary: 'C:\\Users\\davis\\Documents\\chromedriver\\chromedriver.exe' 
+        }
     }],
 
     //
@@ -86,7 +89,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -139,8 +142,6 @@ export const config = {
         dryRun: false,
         // <boolean> abort the run on first failure
         failFast: false,
-        // <string[]> Only execute the scenarios with name matching the expression (repeatable).
-        name: [],
         // <boolean> hide step definition snippets for pending steps
         snippets: true,
         // <boolean> hide source uris
@@ -154,7 +155,6 @@ export const config = {
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },
-
 
     //
     // =====
@@ -312,24 +312,24 @@ export const config = {
      * @param {<Object>} results object containing test results
      */
     onComplete: function(exitCode, config, capabilities, results) {
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'allure-results', '--clean'])
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', 'allure-results', '--clean']);
         return new Promise((resolve, reject) => {
             const generationTimeout = setTimeout(
                 () => reject(reportError),
-                5000)
+                5000);
 
             generation.on('exit', function(exitCode) {
-                clearTimeout(generationTimeout)
+                clearTimeout(generationTimeout);
 
                 if (exitCode !== 0) {
-                    return reject(reportError)
+                    return reject(reportError);
                 }
 
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
+                console.log('Allure report successfully generated');
+                resolve();
+            });
+        });
     },
     /**
     * Gets executed when a refresh happens.
