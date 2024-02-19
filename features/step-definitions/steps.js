@@ -15,17 +15,17 @@ When('I enter "sdfsadg" username', async function() {
 
 When('I enter "SuperSecretPassword!" password', async function() {
     const passwordInput = await $("#password");
-    passwordInput.setValue("SuperSecretPassword!");
+    await passwordInput.setValue("SuperSecretPassword!");
 });
 
 When('I enter "arhsrtnsrtns" password', async function() {
     const passwordInput = await $("#password");
-    passwordInput.setValue("arhsrtnsrtns!");
+    await passwordInput.setValue("arhsrtnsrtns!");
 });
 
 When('I press on Login button', async function() {
     const button = await $("button[type=submit]");
-    button.click();
+    await button.click();
 });
 
 Then('I see a message "You logged into a secure area!"', async function() {
